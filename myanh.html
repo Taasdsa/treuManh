@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mkhoa muon hoi cnayy ❤️</title>
+
+<style>
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    min-height: 100vh;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: Arial, sans-serif;
+    background: linear-gradient(135deg, #ffd6e7, #fff0f5);
+}
+
+/* Khung chính */
+.card {
+    width: 90%;
+    max-width: 500px;
+    padding: 45px 30px;
+    text-align: center;
+    background: rgba(255,255,255,0.92);
+    border-radius: 30px;
+    box-shadow: 0 20px 60px rgba(200,70,120,0.2);
+    position: relative;
+    z-index: 5;
+    animation: appear 1s ease;
+}
+
+.heart {
+    font-size: 75px;
+    animation: heartbeat 1.2s infinite;
+}
+
+h1 {
+    color: #ed4f86;
+    font-size: 32px;
+    margin: 15px 0;
+}
+
+p {
+    color: #555;
+    font-size: 17px;
+    line-height: 1.7;
+}
+
+/* Khu vực nút */
+.buttons {
+    margin-top: 30px;
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    min-height: 55px;
+}
+
+button {
+    border: none;
+    padding: 14px 22px;
+    border-radius: 30px;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+.yes {
+    background: #ff5c91;
+    color: white;
+    box-shadow: 0 8px 20px rgba(255,92,145,0.3);
+}
+
+.yes:hover {
+    transform: scale(1.08);
+    background: #ed3f78;
+}
+
+.no {
+    background: #eee;
+    color: #555;
+    position: relative;
+}
+
+/* Màn hình thành công */
+.success {
+    display: none;
+}
+
+.success h1 {
+    font-size: 35px;
+}
+
+.success-heart {
+    font-size: 90px;
+    animation: heartbeat 0.8s infinite;
+}
+
+/* Tim bay */
+.floating-heart {
+    position: fixed;
+    bottom: -50px;
+    pointer-events: none;
+    z-index: 10;
+    animation: fly linear forwards;
+}
+
+@keyframes heartbeat {
+    0%,100% {
+        transform: scale(1);
+    }
+
+    50% {
+        transform: scale(1.18);
+    }
+}
+
+@keyframes appear {
+    from {
+        opacity: 0;
+        transform: translateY(30px) scale(0.9);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
+@keyframes fly {
+    from {
+        transform: translateY(0) rotate(0deg);
+        opacity: 1;
+    }
+
+    to {
+        transform: translateY(-110vh) rotate(360deg);
+        opacity: 0;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<!-- MÀN HÌNH HỎI -->
+<div class="card" id="question">
+
+    <div class="heart">🥺</div>
+
+    <h1>Mi Anhh oiii ❤️</h1>
+
+    <p>
+        Mkhoaa nho' my anhh nhiu lamm'
+        <br>
+        Tui chi thac mac,khbtt mAnh co chut nao nho' tui khommm!?
+    </p>
+
+ 
+
+    <h2>Nibe,u such a special girll  🥺</h2>
+
+    <div class="buttons">
+
+        <button class="yes" onclick="forgive()">
+            Co' chut' chut' ❤️
+        </button>
+
+        <button class="no" id="noButton">
+            Khongg! 😡
+        </button>
+
+    </div>
+
+</div>
+
+
+<!-- MÀN HÌNH THÀNH CÔNG -->
+<div class="card success" id="success">
+
+    <div class="success-heart">
+        ❤️
+    </div>
+
+    <h1>Yayyyy! 🥰</h1>
+
+    <p>
+        Hihi,tks bro nha=)
+        Tui biet mAnh khong the nhan KHONG ma=) 😭❤️
+    </p>
+
+    <p>
+        Tui thương ông nhìu lam áaaaa.
+        <br>
+        Xia xia co gai quang ngai :)  💗
+    </p>
+
+</div>
+
+
+<script>
+
+/* =========================
+   NÚT KHÔNG THA LỖI CHẠY TRỐN
+========================= */
+
+const noButton = document.getElementById("noButton");
+
+function runAway() {
+
+    const maxX = window.innerWidth - noButton.offsetWidth - 20;
+    const maxY = window.innerHeight - noButton.offsetHeight - 20;
+
+    const x = Math.max(10, Math.random() * maxX);
+    const y = Math.max(10, Math.random() * maxY);
+
+    noButton.style.position = "fixed";
+    noButton.style.left = x + "px";
+    noButton.style.top = y + "px";
+}
+
+/* Máy tính: rê chuột vào là chạy */
+noButton.addEventListener("mouseenter", runAway);
+
+/* Điện thoại: chạm vào cũng chạy */
+noButton.addEventListener("touchstart", function(e) {
+    e.preventDefault();
+    runAway();
+});
+
+
+/* =========================
+   BẤM THA LỖI
+========================= */
+
+function forgive() {
+
+    document.getElementById("question").style.display = "none";
+
+    document.getElementById("success").style.display = "block";
+
+    // Tạo thật nhiều trái tim
+    for (let i = 0; i < 60; i++) {
+
+        setTimeout(createHeart, i * 50);
+
+    }
+}
+
+
+/* =========================
+   TẠO TIM BAY
+========================= */
+
+function createHeart() {
+
+    const heart = document.createElement("div");
+
+    heart.className = "floating-heart";
+
+    const hearts = [
+        "❤️",
+        "💕",
+        "💗",
+        "💖",
+        "💘",
+        "🥰"
+    ];
+
+    heart.innerHTML =
+        hearts[Math.floor(Math.random() * hearts.length)];
+
+    heart.style.left =
+        Math.random() * 100 + "vw";
+
+    heart.style.fontSize =
+        (20 + Math.random() * 35) + "px";
+
+    heart.style.animationDuration =
+        (3 + Math.random() * 4) + "s";
+
+    document.body.appendChild(heart);
+
+    setTimeout(function() {
+        heart.remove();
+    }, 7000);
+}
+
+
+/* Tim bay nền liên tục */
+setInterval(createHeart, 800);
+
+</script>
+
+</body>
+</html>
